@@ -4,7 +4,7 @@
 int main(void) {
     put_str("I am kernel!\n");
     init_all();
-    //asm volatile("sti;");
+    asm volatile("sti;");
     ASSERT(1==2);
     return 0;
 }
