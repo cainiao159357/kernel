@@ -35,9 +35,9 @@ $(BUILD_DIR)/kernel.o:./kernel/kernel.S
 	$(AS) $(ASFLAGS) $< -o $@
 
 $(BUILD_DIR)/%.o:./device/%.c
-	$(CC) $(CFLAGS) $< -o $@ -MD -MF $(BUILD_DIR)/$*.d -MP
+	$(CC) $(CFLAGS) $< -o $@ -MMD -MF $(BUILD_DIR)/$*.d -MP
 $(BUILD_DIR)/%.o:./kernel/%.c
-	$(CC) $(CFLAGS) $< -o $@ -MD -MF $(BUILD_DIR)/$*.d -MP
+	$(CC) $(CFLAGS) $< -o $@ -MMD -MF $(BUILD_DIR)/$*.d -MP
 
 build:$(BUILD_DIR)/kernel.bin $(BUILD_DIR)/mbr.bin $(BUILD_DIR)/loader.bin
 

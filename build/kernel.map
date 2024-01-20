@@ -141,25 +141,25 @@ LOAD ./build/print.o
  *(.text.hot .text.hot.*)
  *(SORT_BY_NAME(.text.sorted.*))
  *(.text .stub .text.* .gnu.linkonce.t.*)
- .text          0x00000000c0001500       0x63 ./build/main.o
+ .text          0x00000000c0001500       0x64 ./build/main.o
                 0x00000000c0001500                main
  .text.__x86.get_pc_thunk.bx
-                0x00000000c0001563        0x4 ./build/main.o
-                0x00000000c0001563                __x86.get_pc_thunk.bx
- .text          0x00000000c0001567       0x38 ./build/init.o
-                0x00000000c0001567                init_all
- .text          0x00000000c000159f      0x4a0 ./build/interrupt.o
-                0x00000000c00015ca                get_intr_status
-                0x00000000c00015fc                intr_disable
-                0x00000000c000162f                intr_enable
-                0x00000000c0001663                set_intr_status
-                0x00000000c00019d0                idt_init
+                0x00000000c0001564        0x4 ./build/main.o
+                0x00000000c0001564                __x86.get_pc_thunk.bx
+ .text          0x00000000c0001568       0x38 ./build/init.o
+                0x00000000c0001568                init_all
+ .text          0x00000000c00015a0      0x4a0 ./build/interrupt.o
+                0x00000000c00015cb                get_intr_status
+                0x00000000c00015fd                intr_disable
+                0x00000000c0001630                intr_enable
+                0x00000000c0001664                set_intr_status
+                0x00000000c00019d1                idt_init
  .text.__x86.get_pc_thunk.ax
-                0x00000000c0001a3f        0x4 ./build/interrupt.o
-                0x00000000c0001a3f                __x86.get_pc_thunk.ax
- .text          0x00000000c0001a43       0xf7 ./build/debug.o
-                0x00000000c0001a43                panic_spin
- *fill*         0x00000000c0001b3a        0x6 
+                0x00000000c0001a40        0x4 ./build/interrupt.o
+                0x00000000c0001a40                __x86.get_pc_thunk.ax
+ .text          0x00000000c0001a44       0xf7 ./build/debug.o
+                0x00000000c0001a44                panic_spin
+ *fill*         0x00000000c0001b3b        0x5 
  .text          0x00000000c0001b40      0x391 ./build/kernel.o
  .text          0x00000000c0001ed1      0x108 ./build/timer.o
                 0x00000000c0001f96                timer_init
