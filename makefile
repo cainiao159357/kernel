@@ -21,6 +21,7 @@ SRCS_BUILD_PATH=$(addprefix $(BUILD_DIR)/,$(SRCS))
 OBJS =$(SRCS_BUILD_PATH:.c=.o)
 OBJS :=$(OBJS:.S=.o)
 OBJS := $(filter $(BUILD_DIR)/main.o, $(OBJS)) $(filter-out $(BUILD_DIR)/main.o, $(OBJS))
+
 -include SRCS_H_D
 
 $(BUILD_DIR)/%.bin:./boot/%.S
@@ -37,6 +38,9 @@ $(BUILD_DIR)/kernel.o:./kernel/kernel.S
 $(BUILD_DIR)/%.o:./device/%.c
 	$(CC) $(CFLAGS) $< -o $@ -MMD -MF $(BUILD_DIR)/$*.d -MP
 $(BUILD_DIR)/%.o:./kernel/%.c
+	$(CC) $(CFLAGS) $< -o $@ -MMD -MF $(BUILD_DIR)/$*.d -MP
+
+$(BUILD_DIR)/%.o:./lib/%.c
 	$(CC) $(CFLAGS) $< -o $@ -MMD -MF $(BUILD_DIR)/$*.d -MP
 
 build:$(BUILD_DIR)/kernel.bin $(BUILD_DIR)/mbr.bin $(BUILD_DIR)/loader.bin
