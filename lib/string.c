@@ -35,9 +35,12 @@ int memcmp(const void* a_, const void* b_, uint32_t size){
 }
 char* strcpy(char* dst_, const char* src_){
     ASSERT(dst_!=NULL && src_!=NULL);
-    for(uint32_t i=0;src_[i]!=0;i++){
+    uint32_t i;
+    for(i=0;src_[i]!=0;i++){
         dst_[i]=src_[i];
     }
+    dst_[i]=0;
+    return dst_;
 }
 uint32_t strlen(const char* str){
     ASSERT(str!=NULL);

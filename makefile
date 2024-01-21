@@ -42,6 +42,8 @@ $(BUILD_DIR)/%.o:./kernel/%.c
 
 $(BUILD_DIR)/%.o:./lib/%.c
 	$(CC) $(CFLAGS) $< -o $@ -MMD -MF $(BUILD_DIR)/$*.d -MP
+$(BUILD_DIR)/%.o:./lib/kernel/%.c
+	$(CC) $(CFLAGS) $< -o $@ -MMD -MF $(BUILD_DIR)/$*.d -MP
 
 build:$(BUILD_DIR)/kernel.bin $(BUILD_DIR)/mbr.bin $(BUILD_DIR)/loader.bin
 
