@@ -24,8 +24,8 @@ bool bitmap_scan_test(struct bitmap* btmp, uint32_t bit_idx){
 /* 在位图中申请连续cnt个位,成功则返回其起始位下标，失败返回-1 */
 int bitmap_scan(struct bitmap* btmp, uint32_t cnt){
     ASSERT(btmp!=NULL && cnt>=1);
-    uint32_t bit_idx;
-    for(bit_idx=0;bit_idx/8<btmp->btmp_bytes_len;bit_idx++){
+    int bit_idx;
+    for(bit_idx=0;(uint32_t)bit_idx/8<btmp->btmp_bytes_len;bit_idx++){
         if(bitmap_scan_test(btmp,bit_idx)){
             continue;
         }
@@ -45,13 +45,17 @@ int bitmap_scan(struct bitmap* btmp, uint32_t cnt){
 }
 
 /* 将位图btmp的bit_idx位设置为value */
-void bitmap_set(struct bitmap* btmp, uint32_t bit_idx, int8_t value){
+void bitmap_set(struct bitmap* btmp, uint32_t bit_idx,uint32_t cnt,int8_t value){
     ASSERT(btmp!=NULL && (value==0||value==1));
-    uint32_t btmp_bits_idx=bit_idx/8;
-    uint32_t btmp_bit_idx=bit_idx%8;
-    if(value==1){
-        btmp->bits[btmp_bits_idx]|=SHL(BITMAP_MASK,btmp_bit_idx);
-    }else{
-        btmp->bits[btmp_bits_idx]&=~SHL(BITMAP_MASK,btmp_bit_idx);
+    uint32_t btmp_bits_idx,btmp_bit_idx;
+    while(cnt--){
+        btmp_bits_idx=bit_idx/8;
+        btmp_bit_idx=bit_idx%8;
+        if(value==1){
+            btmp->bits[btmp_bits_idx]|=SHL(BITMAP_MASK,btmp_bit_idx);
+        }else{
+            btmp->bits[btmp_bits_idx]&=~SHL(BITMAP_MASK,btmp_bit_idx);
+        }
+        bit_idx++;
     }
 }

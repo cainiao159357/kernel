@@ -66,7 +66,7 @@ char* strrchr(const char* string, uint8_t ch){
     char *res_addr=NULL;
     for(int i=0;string[i]!=0;i++){
         if(string[i]==ch){
-            res_addr=&string[i];
+            res_addr=(char *)&string[i];
         }
     }
     return res_addr;

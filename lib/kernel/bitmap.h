@@ -8,7 +8,7 @@
 #define BITMAP_MASK 1
 #define SHL(VALUE,DIGIT) (uint8_t)((VALUE)<<(DIGIT))
 struct bitmap {
-    uint32_t btmp_bytes_len;
+    uint32_t btmp_bytes_len;//以字节位单位
 /* 在遍历位图时,整体上以字节为单位,细节上是以位为单位,所以此处位图的指针必须是单字节 */
     uint8_t* bits;
 };
@@ -16,5 +16,5 @@ struct bitmap {
 void bitmap_init(struct bitmap* btmp);
 bool bitmap_scan_test(struct bitmap* btmp, uint32_t bit_idx);
 int bitmap_scan(struct bitmap* btmp, uint32_t cnt);
-void bitmap_set(struct bitmap* btmp, uint32_t bit_idx, int8_t value);
+void bitmap_set(struct bitmap* btmp, uint32_t bit_idx, uint32_t cnt,int8_t value);
 #endif //BOCHS_BITMAP_H
